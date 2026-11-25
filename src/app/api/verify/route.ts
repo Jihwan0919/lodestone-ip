@@ -96,6 +96,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ nickname: realNickname, uuid, ip });
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : "알 수 없는 오류";
-    return NextResponse.json({ error: `서버 오류: ${msg}` }, { status: 500 });
+    return NextResponse.json({ error: `디스코드 웹후크 주소 오류: ${msg}` }, { status: 500 });
   }
 }
