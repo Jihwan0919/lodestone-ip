@@ -68,3 +68,6 @@ button:focus { outline: none; }
 .ground-dirt  { height: 24px; background: #6b4423; border-top: 3px solid #3c6e21; }
 .ground-stone { height: 26px; background: #57534e; background-image: radial-gradient(#22d3ee 20%, transparent 22%); background-size: 72px 26px; border-top: 3px solid #292524; }
 .ground-rock  { height: 18px; background: repeating-linear-gradient(90deg, #0c0a09 0 24px, #3f3f46 24px 48px); border-top: 3px solid #09090b; }
+.mc-cloud { animation: moveCloud 38s linear infinite !important; will-change: transform; }
+.cloud-1 { animation-duration: 34s !important; }
+.cloud-2 { animation-duration: 48s !important; animation-delay: -15s !important; }
