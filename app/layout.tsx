@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const diamondIcon = "data:image/svg+xml," + encodeURIComponent(
+  `<svg xmlns="http://w3.org" viewBox="0 0 16 16"><path d="M5,2h6v2h2v2h2v4h-2v2h-2v2H5v-2H3v-2H1V6h2V4h2V2z" fill="#083344"/><path d="M5,3h6v2h2v4h-2v2H5V9H3V5h2V3z" fill="#22d3ee"/><path d="M5,4h4v2h2v2H9V6H5V4z" fill="#a5f3fc"/></svg>`
+);
+
 export const metadata: Metadata = {
-  title: "마인크래프트 서버 IP 찾기 | MC SERVER IP",
-  description: "내 마인크래프트 멀티 서버 IP 주소와 포트(:25565)를 1초 만에 확인하고 복사하세요.",
+  title: "마인크래프트 서버 IP 찾기",
+  description: "마인크래프트 서버 IP 및 접속 정보 실시간 확인기",
+  icons: { icon: diamondIcon },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
