@@ -1,0 +1,70 @@
+@import "tailwindcss";
+@font-face { font-family: 'DungGeunMo'; src: url('https://jsdelivr.net') format('woff'); }
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'DungGeunMo', monospace; image-rendering: pixelated; }
+body { min-height: 100vh; overflow: hidden; user-select: none; background: #040712; }
+button:focus { outline: none; }
+
+.world-container { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 16px; overflow: hidden; }
+.world-night { background: linear-gradient(to bottom, #040712, #0d152a 55%, #1b1742); }
+@keyframes pulseDot { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+.sky-layer { position: absolute; inset: 0; pointer-events: none; }
+.celestial-body { position: absolute; top: 44px; right: 12%; width: 64px; height: 64px; }
+.moon { background: #f8fafc; border: 4px solid #cbd5e1; box-shadow: 0 0 40px rgba(248, 250, 252, 0.6); }
+
+@keyframes moveCloud { from { transform: translateX(-320px); } to { transform: translateX(calc(100vw + 320px)); } }
+.mc-cloud { position: absolute; animation: moveCloud linear infinite; }
+.cloud-1 { width: 220px; height: 40px; top: 10%; animation-duration: 34s; }
+.cloud-2 { width: 280px; height: 48px; top: 20%; animation-duration: 46s; animation-delay: 5s; }
+.cloud-night { background: rgba(51, 65, 85, 0.75); box-shadow: 0 6px 0 #1e293b; }
+
+.mountains-svg { position: fixed; bottom: 84px; left: 0; width: 100%; height: 260px; z-index: 1; pointer-events: none; }
+.iso-shadow { filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.8)); }
+
+.portal-wrap { position: fixed; bottom: 84px; left: 16%; z-index: 6; pointer-events: none; }
+.portal-frame { width: 92px; height: 124px; background: #1e1b2e; border: 13px solid #14101f; box-shadow: inset 0 0 0 3px #3b2d5e, 0 0 25px rgba(168, 85, 247, 0.5); display: flex; align-items: center; justify-content: center; }
+@keyframes portalSwirl { 0%, 100% { opacity: 0.75; transform: scale(1); } 50% { opacity: 1; transform: scale(1.04); } }
+.portal-inner { width: 100%; height: 100%; background: repeating-linear-gradient(45deg, #9333ea 0 10px, #c084fc 10px 20px); animation: portalSwirl 1.6s infinite; }
+
+@keyframes floatItem { 0%, 100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-12px) rotate(4deg); } }
+.pickaxe-wrap { position: fixed; top: 15%; right: 6%; z-index: 12; animation: floatItem 2.8s ease-in-out infinite; filter: drop-shadow(0 0 18px rgba(168, 85, 247, 0.9)); pointer-events: none; }
+
+@keyframes enchantShimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+.enchant-banner { background: linear-gradient(115deg, #18181b 15%, #3b0764 42%, #701a75 50%, #3b0764 58%, #18181b 85%); background-size: 200% 100%; animation: enchantShimmer 4s linear infinite; }
+
+.mc-gui { position: relative; z-index: 20; width: 100%; max-width: 460px; padding: 20px; margin-bottom: 115px; background: repeating-linear-gradient(135deg, #5ef2e3 0 12px, #41d8c8 12px 24px, #7bf9ec 24px 36px); border: 6px solid #1aa39c; outline: 4px solid #083836; box-shadow: inset 4px 4px 0 #d8fffb, inset -4px -4px 0 #26b8b0, 0 0 38px rgba(65, 216, 200, 0.55), 0 24px 60px rgba(0, 0, 0, 0.9); }
+
+.mc-term { background: #141414; border: 4px solid; border-color: #000 #555 #555 #000; padding: 14px; color: #fff; margin-bottom: 12px; }
+.term-top { display: flex; justify-content: space-between; font-size: 12px; color: #aaa; margin-bottom: 8px; }
+.ip-row { display: flex; align-items: center; justify-content: space-between; background: #000; border: 2px solid #4a4a4a; padding: 10px 12px; gap: 10px; }
+.ip-val { font-size: 22px; color: #55ff55; text-shadow: 2px 2px 0 #0f380f; word-break: break-all; }
+.copy-msg { height: 16px; font-size: 12px; color: #ffff55; margin-top: 4px; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 6px; }
+.info-card { background: #222; border: 2px solid #3f3f3f; padding: 8px 10px; }
+.info-lbl { display: block; font-size: 11px; color: #999; margin-bottom: 3px; }
+.info-val-biome { font-size: 14px; color: #55ffff; }
+.info-val-isp { font-size: 14px; color: #ffaa00; word-break: break-word; }
+
+.mc-btn { background: #727272; color: #fff; text-shadow: 2px 2px 0 #2b2b2b; border: 3px solid #000; box-shadow: inset 3px 3px 0 #aaa, inset -3px -3px 0 #444; cursor: pointer; padding: 6px 12px; font-size: 13px; }
+.mc-btn:hover { background: #5b7c2a; box-shadow: inset 3px 3px 0 #8bc34a, inset -3px -3px 0 #334d14; color: #ffffa0; }
+.mc-btn:active { transform: translateY(2px); }
+.mc-btn-full { width: 100%; padding: 10px; font-size: 15px; }
+
+.hotbar { position: fixed; bottom: 94px; z-index: 20; display: flex; gap: 4px; background: rgba(30, 30, 30, 0.94); padding: 4px; border: 2px solid #000; }
+.hotbar-slot { width: 42px; height: 42px; background: #8b8b8b; border: 3px solid; border-color: #373737 #fff #fff #373737; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.hotbar-active { outline: 2px solid #fff; background: #a3a3a3; }
+
+.left-scene { position: fixed; bottom: 84px; left: 16px; z-index: 12; display: flex; align-items: flex-end; gap: 10px; pointer-events: none; transform-origin: bottom left; }
+.right-scene { position: fixed; bottom: 84px; right: 16px; z-index: 12; display: flex; align-items: flex-end; gap: 12px; pointer-events: none; transform-origin: bottom right; }
+@keyframes mcIdle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+.idle-3d { animation: mcIdle 1.6s steps(2) infinite; }
+
+.torch-wrap { display: flex; flex-direction: column; align-items: center; margin-bottom: 2px; }
+.torch-flame { width: 16px; height: 16px; background: #fef08a; border: 2px solid #f97316; box-shadow: 0 0 22px #facc15; animation: pulseDot 0.5s infinite; }
+.torch-stick { width: 10px; height: 42px; background: #78350f; border-inline: 1px solid #000; }
+
+.ground-layer { position: fixed; bottom: 0; left: 0; right: 0; height: 84px; z-index: 5; display: flex; flex-direction: column; }
+.ground-grass { height: 16px; background: repeating-linear-gradient(90deg, #65b53b 0 28px, #3f7822 28px 56px); border-top: 4px solid #74c947; }
+.ground-dirt  { height: 24px; background: #6b4423; border-top: 3px solid #3c6e21; }
+.ground-stone { height: 26px; background: #57534e; background-image: radial-gradient(#22d3ee 20%, transparent 22%); background-size: 72px 26px; border-top: 3px solid #292524; }
+.ground-rock  { height: 18px; background: repeating-linear-gradient(90deg, #0c0a09 0 24px, #3f3f46 24px 48px); border-top: 3px solid #09090b; }
